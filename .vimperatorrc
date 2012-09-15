@@ -1,0 +1,34 @@
+" j/k でのスクロール幅を 1行 から 2行 に変更
+map j 2<C-e>
+map k 2<C-y>
+
+" Backspace に戻るを割り当て
+map <BS> <A-Left>
+
+" エラーメッセージ表示時のbeep音をOFF
+set noerrorbells
+
+" 検索結果を強調表示
+set hlsearch
+
+" 検索文字列を入力と同時にマッチする結果を表示
+set incsearch
+
+" コマンドラインに現在のモードを表示
+set showmode
+
+" ヒントをアルファベットに
+set hintchars=ifjklasdhguonmerwc
+
+" ヒントの文字を大きく 背景色も変更
+hi Hint font-family: Arial; font-size: 15px; font-weight: bold; text-transform: uppercase; color: white; background-color: #dd2222; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
+
+" 色変更
+hi HintActive -append background-color: #9acd32; color: #556b2f;
+hi HintElem background-color: #fffacd; color: #8b4513;
+hi PromptText background: #4682b4; color: white;
+hi ModeMsg -append background: #d2691e;
+
+" コマンドラインへの入力は常にIMEをOFFから
+style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
+
