@@ -32,3 +32,11 @@ hi ModeMsg -append background: #d2691e;
 " コマンドラインへの入力は常にIMEをOFFから
 style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
 
+" removetabs プラグインマッピング
+" 現在より左のタブを閉じる
+noremap <C-S-p> :removetabsleft<CR>
+" 現在より右のタブを閉じる
+noremap <C-S-n> :removetabsright<CR>
+
+" twittperator設定
+let g:twittperator_use_ssl_connection_for_api_ep = 1
