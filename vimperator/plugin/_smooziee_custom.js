@@ -138,7 +138,7 @@ let self = liberator.plugins.smooziee = (function(){
       ["<C-f>"],
       "Smooth scroll pagedown",
       function(count){
-        self.smoothScrollBy( window.innerHeight * (count || 1) );
+        self.smoothScrollBy( Math.floor( window.innerHeight * 0.82 )* (count || 1) );
       },
       { count: true }
   );
@@ -147,7 +147,7 @@ let self = liberator.plugins.smooziee = (function(){
       ["<C-b>"],
       "Smooth scroll pageup",
       function(count){
-        self.smoothScrollBy( window.innerHeight * (count || -1) );
+        self.smoothScrollBy( Math.floor( window.innerHeight * 0.82 )* (count || -1) );
       },
       { count: true }
   );
