@@ -40,3 +40,40 @@ noremap <C-S-n> :removetabsright<CR>
 
 " twittperator設定
 let g:twittperator_use_ssl_connection_for_api_ep = 1
+
+" nextlink.js の設定
+let g:nextlink_followlink = "true"
+let g:nextlink_nositeinfo_act = "f"
+
+" copy.js の設定
+javascript <<EOM
+
+liberator.globalVariables.copy_templates = [
+    { label: 'titleAndURL',    value: '%TITLE%\n%URL%' },
+    { label: 'title',          value: '%TITLE%' },
+    { label: 'anchor',         value: '<a href="%URL%">%TITLE%</a>' },
+    { label: 'selanchor',      value: '<a href="%URL%" title="%TITLE%">%SEL%</a>' },
+    { label: 'htmlblockquote', value: '<blockquote cite="%URL%" title="%TITLE%">%HTMLSEL%</blockquote>' },
+    { label: 'ggl', value: 'Copy title & goo.gl', custom: function() { return '「' +  buffer.title + '」 ' + getShortUrl(); }
+    }
+];
+var getShortUrl = function() {
+    var longUrl = content.document.location.href;
+    var googl = {
+        'url' : 'https://www.googleapis.com/urlshortener/v1/url',
+        'method' : 'POST',
+        'contentType' : 'application/json',
+        'longJson' : '{ "longUrl" : "' + longUrl + '" }'
+    };
+    var request = new XMLHttpRequest();
+    request.open(googl.method, googl.url, false);
+    request.setRequestHeader('Content-Type', googl.contentType);
+    request.send(googl.longJson);
+    return JSON.parse(request.responseText).id;
+};
+
+EOM
+
+nmap ,cb :copy<Space>ggl<CR>
+nmap ,ct :copy<Space>title<CR>
+

@@ -1,3 +1,5 @@
 /vimperator/info
 /vimperator/info/*
 
+!/vimperator/info/default/nextlink-local-siteinfo
+
